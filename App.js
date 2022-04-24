@@ -7,17 +7,12 @@
  */
 
 import React,{useState} from 'react';
-import type {Node} from 'react';
+
 import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
   View,
   Button,
-  Linking,
 } from 'react-native';
 
 import {
@@ -52,7 +47,6 @@ const App = () => {
       <Text style={styles.text}>Number: {number}</Text>
       <Button style={styles.button} title='-' onPress={onClickRes}></Button>
       <Text style={styles.text}> times: {times2}</Text>
-      
     </View>
   );
 };
