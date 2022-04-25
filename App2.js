@@ -6,109 +6,89 @@
  * @flow strict-local
  */
 
- import React,{useState} from 'react';
+import React,{useState} from 'react';
 
- import {
-   StyleSheet,
-   Text,
-   View,
-   Button,
- } from 'react-native';
- 
- import {
-   Colors,
-   DebugInstructions,
-   Header,
-   LearnMoreLinks,
-   ReloadInstructions,
- } from 'react-native/Libraries/NewAppScreen';
- 
- 
- const App = () => {
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ScrollView,
+  RefreshControl,
+} from 'react-native';
 
-     return (
-     <View style={styles.body}>
-       <View style={styles.viewc1} >
-         <View style={styles.view1}>  
-         <Text style={styles.text}> View 1</Text>
-         </View>
-         <View style={styles.view2}>  
-         <Text style={styles.text}> View 2</Text>
-         </View>
-         <View style={styles.view3}>  
-         <Text style={styles.text}> View 3</Text>
-         </View>
-       </View>
-        <View style={styles.viewc2} >
-          <View style={styles.view4}>
-            <Text style={styles.text}> View 4</Text>
-          </View>  
-          <View style={styles.view5}>
-            <Text style={styles.text}> View 4</Text>
-          </View> 
-        </View>
-     </View>
-   );
- };
- 
- const styles = StyleSheet.create({
-   body: {
-     flex: 1,
-     backgroundColor: '#fff',
-   },
-   viewc1: {
+import {
+  Colors,
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+
+
+const App = () => {
+
+  const [Items,setItems] = useState([
+    {key:1,item:'Item 1'},
+    {key:1,item:'Item 2'},
+    {key:1,item:'Item 3'},
+    {key:1,item:'Item 4'},
+    {key:1,item:'Item 5'},
+    {key:1,item:'Item 6'},
+    {key:1,item:'Item 7'},
+    {key:1,item:'Item 8'},
+    {key:1,item:'Item 9'},
+  ]);
+
+  const [refreshing,setRefreshing] = useState(False);
+  const onRefresh = () => {
+    setRefreshing(True);
+    setItems([...Items,{key:1}]);
+  }
+
+  return (
+      <ScrollView 
+      style={styles.body}
+      refreshControl={
+        <RefreshControl
+        refreshing={refreshing}        
+        />
+      }      
+      >
+
+      {
+        Items.map((item)=>{
+          return(
+          <View style={styles.item} key={item.key}>
+            <Text style={styles.text}> {item.item}</Text>
+          </View>
+          )
+        })
+      }
+    
+      </ScrollView>
+  );
+};
+
+const styles = StyleSheet.create({
+  body: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems:'stretch',
-    justifyContent:'center',
-    flexDirection:'row',
-   },
-   viewc2: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems:'stretch',
-    justifyContent:'center',
-    flexDirection:'column',
-   },
-   view1:{
-      flex:1,
-      backgroundColor:'blue',
-      justifyContent: 'center',
-      alignItems:'center',
+  },
+  item:{
+    backgroundColor: 'blue',
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    
+  },
+  text: {
+    fontSize: 20,
+    color: '#000',
+    margin: 20,
+    
+  },
 
-   },
-   view2:{
-    flex:2,
-    backgroundColor:"pink",
-    justifyContent:'center',
-      alignItems:'center',  
-   },
-   view3:{
-    flex:3,
-    backgroundColor:'yellow',
-    justifyContent:'center',
-      alignItems:'center',  
-   },
-   view4:{
-    flex:1,
-    backgroundColor:'red',
-    justifyContent:'center',
-      alignItems:'center',  
-   },
-   view5:{
-    flex:1,
-    backgroundColor:'green',
-    justifyContent:'center',
-      alignItems:'center',  
-   },
-   text: {
-     fontSize: 20,
-     color: '#000',
-     margin: 20,
-     textTransform: 'uppercase',
-   },
- 
- });
- 
- export default App;
- 
+});
+
+export default App;

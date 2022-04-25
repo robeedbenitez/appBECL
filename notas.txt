@@ -1,2 +1,6 @@
 https://www.youtube.com/watch?v=ANdSdIlgsEw
 https://www.youtube.com/watch?v=FSMrzYpBeDM
+----------------
+Crear un proyecto de react native 
+npx react-native init ProyectName
+npm install (instalar dependencias)
