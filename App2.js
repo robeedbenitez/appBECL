@@ -15,6 +15,7 @@ import {
   Button,
   ScrollView,
   RefreshControl,
+
 } from 'react-native';
 
 import {
@@ -40,18 +41,21 @@ const App = () => {
     {key:1,item:'Item 9'},
   ]);
 
-  const [refreshing,setRefreshing] = useState(False);
+  const [refreshing,setRefreshing] = useState(t=false);
   const onRefresh = () => {
-    setRefreshing(True);
-    setItems([...Items,{key:1}]);
-  }
+    setRefreshing(true);
+    setItems([...Items,{key:10,item:'Item 10'}]);
+    setRefreshing(false);
+    }
 
   return (
       <ScrollView 
       style={styles.body}
       refreshControl={
         <RefreshControl
-        refreshing={refreshing}        
+        refreshing={refreshing}
+        onRefresh={onRefresh}     
+        colors={['blue']}
         />
       }      
       >
@@ -59,8 +63,9 @@ const App = () => {
       {
         Items.map((item)=>{
           return(
+           
           <View style={styles.item} key={item.key}>
-            <Text style={styles.text}> {item.item}</Text>
+            <Text style={styles.text}> {item.item + console.log(item.key)}</Text>
           </View>
           )
         })
