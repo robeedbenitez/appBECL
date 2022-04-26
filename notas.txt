@@ -4,3 +4,10 @@ https://www.youtube.com/watch?v=FSMrzYpBeDM
 Crear un proyecto de react native 
 npx react-native init ProyectName
 npm install (instalar dependencias)
+----------------------------------------------------------------
+Componentes
+
+View: es un componente para crear una vista o pantalla
+Text: para colocar texto
+Scrollview: componete para poder hacer scrollo a la pantalla
+flatlist: ...
