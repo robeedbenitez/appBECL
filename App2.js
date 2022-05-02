@@ -47,6 +47,7 @@ const App = () => {
       editable={true} // false para inhabilitar
       secureTextEntry
       />
+      
       <Text style={styles.text}>
         Ud escribio esto: {something}
       </Text>
