@@ -16,6 +16,7 @@ import {
   ScrollView,
   RefreshControl,
   FlatList,
+  TextInput,
 
 } from 'react-native';
 
@@ -30,60 +31,13 @@ import {
 
 const App = () => {
 
-  const [Items,setItems] = useState([
-    {name:'Item 1'},
-    {name:'Item 2'},
-    {name:'Item 3'},
-    {name:'Item 4'},
-    {name:'Item 5'},
-    {name:'Item 6'},
-    {name:'Item 7'},  
-    {name:'Item 8'},
-    {name:'Item 9'},
-    {name:'Item 10'},
-  ]);
-  
-
-  const [refreshing,setRefreshing] = useState(t=false);
-  const onRefresh = () => {
-    setRefreshing(true);
-    setItems([...Items,{key:10,item:'Item 10'}]);
-    setRefreshing(false);
-    }
-
   return (
-    <FlatList
-      data={Items}
-      keyExtractor={(item,index)=>index.toString()}
-      renderItem={({item}) => (
-        <View style={styles.item}>
-          <Text style={styles.text}>{item.name}</Text>
-        </View>
-      )}
-    />
-      // <ScrollView 
-      // style={styles.body}
-      // refreshControl={
-      //   <RefreshControl
-      //   refreshing={refreshing}
-      //   onRefresh={onRefresh}     
-      //   colors={['blue']}
-      //   />
-      // }      
-      // >
-
-      // {
-      //   Items.map((item)=>{
-      //     return(
-           
-      //     <View style={styles.item} key={item.key}>
-      //       <Text style={styles.text}> {item.item + console.log(item.key)}</Text>
-      //     </View>
-      //     )
-      //   })
-      // }
-    
-      // </ScrollView>
+    <View styles={styles.body}>
+      <Text style={styles.text}>
+        Digite algo
+      </Text>
+      <TextInput style={styles.input}/>
+    </View>
   );
 };
 
@@ -103,7 +57,11 @@ const styles = StyleSheet.create({
     fontSize: 20,
     color: '#000',
     margin: 20,
-    
+  },
+  input: {
+    with: 200,
+    borderWidth: 1,
+    borderColor: '#555',
   },
 
 });
