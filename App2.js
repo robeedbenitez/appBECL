@@ -31,27 +31,37 @@ import {
 
 const App = () => {
 
+  const [something,setSomething]=useState('Digite algo primero');
   return (
+    
     <View styles={styles.body}>
       <Text style={styles.text}>
         Digite algo
       </Text>
-      <TextInput style={styles.input}/>
+      <TextInput 
+      style={styles.input}
+      placeholder='Ingrese algo'
+      onChangeText={(value)=>setSomething(value)}
+      keyboardType='default'
+      maxLength={8}
+      editable={true} // false para inhabilitar
+      secureTextEntry
+      />
+      <Text style={styles.text}>
+        Ud escribio esto: {something}
+      </Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
+    with: '80%',
     flex: 1,
     backgroundColor: '#fff',
-  },
-  item:{
-    backgroundColor: 'blue',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
-    
+
   },
   text: {
     fontSize: 20,
@@ -62,6 +72,7 @@ const styles = StyleSheet.create({
     with: 200,
     borderWidth: 1,
     borderColor: '#555',
+    borderRadius:5,
   },
 
 });

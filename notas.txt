@@ -11,3 +11,4 @@ View: es un componente para crear una vista o pantalla
 Text: para colocar texto
 Scrollview: componete para poder hacer scrollo a la pantalla
 flatlist: ...
+textinput -> placeholder, onchangeText
