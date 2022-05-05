@@ -32,6 +32,10 @@ import {
 const App = () => {
 
   const [something,setSomething]=useState('Digite algo primero');
+  const [submitted,setSumitted]=useState(false);
+  const onPress = () => {
+    setSumitted(!submitted);
+  }
   return (
     
     <View styles={styles.body}>
@@ -41,23 +45,32 @@ const App = () => {
       <TextInput 
       style={styles.input}
       placeholder='Ingrese algo'
-      onChangeText={(value)=>setSomething(value)}
       keyboardType='default'
+      onChangeText={(e)=>setSomething(e)}
       maxLength={8}
       editable={true} // false para inhabilitar
       secureTextEntry
       />
-      
-      <Text style={styles.text}>
+      <Button
+      title={submitted? 'Clear':'Enviar' }
+      onPress={onPress}
+      />
+      {
+        submitted?
+        <Text style={styles.text}>
         Ud escribio esto: {something}
       </Text>
+      :
+      null
+      }
+      
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   body: {
-    with: '80%',
+    width: '80%',
     flex: 1,
     backgroundColor: '#fff',
     justifyContent: 'center',
@@ -70,7 +83,7 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   input: {
-    with: 200,
+    width: 200,
     borderWidth: 1,
     borderColor: '#555',
     borderRadius:5,
