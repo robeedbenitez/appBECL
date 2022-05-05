@@ -88,6 +88,9 @@ const styles = StyleSheet.create({
     borderColor: '#555',
     borderRadius:5,
   },
+  button: {
+    Color: '#555',
+  }
 
 });
 
