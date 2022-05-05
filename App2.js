@@ -17,6 +17,8 @@ import {
   RefreshControl,
   FlatList,
   TextInput,
+  Image,
+  ImageBackground,
 
 } from 'react-native';
 
@@ -37,8 +39,11 @@ const App = () => {
     setSumitted(!submitted);
   }
   return (
-    
-    <View styles={styles.body}>
+    <ImageBackground 
+      styles={styles.fonini}
+      source={require('./assets/img/fonini.png')}
+      resizeMode='stretch'
+    >
       <Text style={styles.text}>
         Digite algo
       </Text>
@@ -52,8 +57,10 @@ const App = () => {
       secureTextEntry
       />
       <Button
+      style={styles.button}
       title={submitted? 'Clear':'Enviar' }
       onPress={onPress}
+      
       />
       {
         submitted?
@@ -63,8 +70,11 @@ const App = () => {
       :
       null
       }
+      <Image
       
-    </View>
+      />
+      
+    </ImageBackground>
   );
 };
 
@@ -89,7 +99,15 @@ const styles = StyleSheet.create({
     borderRadius:5,
   },
   button: {
-    Color: '#555',
+    
+    width: 150, 
+    height:50,
+
+    backgroundColor:'black',
+  },
+  fonini:{
+    width:'100%',
+    height:'100%',
   }
 
 });
