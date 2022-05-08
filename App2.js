@@ -30,6 +30,9 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import styles from './assets/css/styles.js';//importando el stylesheet
+import SesionText from './assets/components/sesionText.js';
+import GoogleButton from './assets/components/GoogleButton.js';
 
 const App = () => {
 
@@ -40,76 +43,37 @@ const App = () => {
   }
   return (
     <ImageBackground 
-      styles={styles.fonini}
+      style={styles.background}
       source={require('./assets/img/fonini.png')}
-      resizeMode='stretch'
     >
-      <Text style={styles.text}>
-        Digite algo
-      </Text>
-      <TextInput 
-      style={styles.input}
-      placeholder='Ingrese algo'
-      keyboardType='default'
-      onChangeText={(e)=>setSomething(e)}
-      maxLength={8}
-      editable={true} // false para inhabilitar
-      secureTextEntry
-      />
-      <Button
-      style={styles.button}
-      title={submitted? 'Clear':'Enviar' }
-      onPress={onPress}
-      
-      />
-      {
-        submitted?
-        <Text style={styles.text}>
-        Ud escribio esto: {something}
-      </Text>
-      :
-      null
-      }
-      <Image
-      
-      />
-      
+      <View style={styles.body}>
+        <View style={[styles.viewLogo]}>
+          <Image       
+            source={require('./assets/img/logo.png')}
+            style={styles.logo}
+          />
+        </View>
+
+        <View style={[styles.viewOptions]}>
+          <SesionText
+            text="Bienvenido"
+          />
+          <GoogleButton
+              
+          />
+          <View
+            style={styles.footer}
+          >
+            <SesionText
+              text="Ayuda"
+            />
+            <SesionText
+              text="UFPS"
+            />
+          </View>
+        </View>
+      </View>
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    width: '80%',
-    flex: 1,
-    backgroundColor: '#fff',
-    justifyContent: 'center',
-    alignItems: 'center',
-
-  },
-  text: {
-    fontSize: 20,
-    color: '#000',
-    margin: 20,
-  },
-  input: {
-    width: 200,
-    borderWidth: 1,
-    borderColor: '#555',
-    borderRadius:5,
-  },
-  button: {
-    
-    width: 150, 
-    height:50,
-
-    backgroundColor:'black',
-  },
-  fonini:{
-    width:'100%',
-    height:'100%',
-  }
-
-});
-
 export default App;
