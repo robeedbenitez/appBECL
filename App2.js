@@ -19,6 +19,8 @@ import {
   TextInput,
   Image,
   ImageBackground,
+  SafeAreaView,
+  Alert,
 
 } from 'react-native';
 
@@ -37,16 +39,16 @@ import GoogleButton from './assets/components/GoogleButton.js';
 const App = () => {
 
   const [something,setSomething]=useState('Digite algo primero');
-  const [submitted,setSumitted]=useState(false);
   const onPress = () => {
-    setSumitted(!submitted);
+    setSomething("hola");
   }
+  
   return (
     <ImageBackground 
       style={styles.background}
       source={require('./assets/img/fonini.png')}
     >
-      <View style={styles.body}>
+      <SafeAreaView style={styles.body}>
         <View style={[styles.viewLogo]}>
           <Image       
             source={require('./assets/img/logo.png')}
@@ -59,7 +61,6 @@ const App = () => {
             text="Bienvenido"
           />
           <GoogleButton
-              
           />
           <View
             style={styles.footer}
@@ -72,7 +73,7 @@ const App = () => {
             />
           </View>
         </View>
-      </View>
+      </SafeAreaView>
     </ImageBackground>
   );
 };
