@@ -6,73 +6,94 @@ import {
     Text,
     Alert,
 } from 'react-native';
+
+
 import {
     GoogleSignin,
     GoogleSigninButton,
     statusCodes,
-    } from 'react-native-google-signin';
+  } from '@react-native-google-signin/google-signin';
+  
+  
+
 
 const GoogleButton = (props) => {
-    const [loggedIn, setloggedIn] = useState(false);
-    const [userInfo, setuserInfo] = useState([]);
-    _signIn = async () => {
-        try {
-            await GoogleSignin.hasPlayServices();
-            const {accessToken, idToken} = await GoogleSignin.signIn();
-            setloggedIn(true);
-        } catch (error) {
-            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-            // user cancelled the login flow
-            alert('Cancel');
-            } else if (error.code === statusCodes.IN_PROGRESS) {
-            alert('Signin in progress');
-            // operation (f.e. sign in) is in progress already
-            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-            alert('PLAY_SERVICES_NOT_AVAILABLE');
-            // play services not available or outdated
-            } else {
-            // some other error happened
-            }
-        }
-        };
-    signOut = async () => {
-        try {
-            await GoogleSignin.revokeAccess();
-            await GoogleSignin.signOut();
-            setloggedIn(false);
-            setuserInfo([]);
-        } catch (error) {
-            console.error(error);
-        }
-    };
-  
-    useEffect(() => {
-        GoogleSignin.configure({
-            scopes: ['email'], // what API you want to access on behalf of the user, default is email and profile
-            webClientId:
-            '418977770929-g9ou7r9eva1u78a3anassxxxxxxx.apps.googleusercontent.com', // client ID of type WEB for your server (needed to verify user ID and offline access)
-            offlineAccess: true, // if you want to access Google API on behalf of the user FROM YOUR SERVER
-        });
-        }, []);
 
+const signIn = async () => {
+    try {
+        await GoogleSignin.hasPlayServices();
+        const userInfo = await GoogleSignin.signIn();
+        this.setState({ userInfo });
+    } catch (error) {
+        if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+        } else if (error.code === statusCodes.IN_PROGRESS) {
+        // operation (e.g. sign in) is in progress already
+        } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        // play services not available or outdated
+        } else {
+        // some other error happened
+        }
+    }
+    };
+
+    const getCurrentUserInfo = async () => {
+    try {
+        const userInfo = await GoogleSignin.signInSilently();
+        this.setState({ userInfo });
+    } catch (error) {
+        if (error.code === statusCodes.SIGN_IN_REQUIRED) {
+        // user has not signed in yet
+        } else {
+        // some other error
+        }
+    }
+    };
+
+    const isSignedIn = async () => {
+        const isSignedIn = await GoogleSignin.isSignedIn();
+        this.setState({ isLoginScreenPresented: !isSignedIn });
+    };
+
+    const getCurrentUser = async () => {
+        const currentUser = await GoogleSignin.getCurrentUser();
+        this.setState({ currentUser });
+    };
+
+    const signOut = async () => {
+    try {
+        await GoogleSignin.revokeAccess();
+        await GoogleSignin.signOut();
+        this.setState({ user: null }); // Remember to remove the user from your app's state as well
+    } catch (error) {
+        console.error(error);
+    }
+    };
+
+    const revokeAccess = async () => {
+    try {
+        await GoogleSignin.revokeAccess();
+        console.log('deleted');
+    } catch (error) {
+        console.error(error);
+    }
+    };
     return (
+
+
+
         <>
-        <View style={styles.sectionContainer}>
+        <View >
+            <Text >Google Authentication</Text>
             <GoogleSigninButton
                 style={{ width: 192, height: 48 }}
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Dark}
-                onPress={this._signIn} />
+                onPress={this._signIn}
+                disabled={this.state.isSigninInProgress} 
+            />
         </View>
-        <View style={styles.buttonContainer}>
-            {!loggedIn && <Text>You are currently logged out</Text>}
-            {loggedIn && (
-                <Button
-                    onPress={this.signOut}
-                    title="LogOut"
-                    color="red"></Button>
-            )}
-        </View></>
+        </>
     )
 };
 const styles = StyleSheet.create({
