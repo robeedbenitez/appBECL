@@ -8,15 +8,7 @@ import {
 } from 'react-native';
 
 
-<<<<<<< HEAD
 import {    GoogleSignin,    statusCodes,} from '@react-native-google-signin/google-signin';
-=======
-import {
-    GoogleSignin,
-    GoogleSigninButton,
-    statusCodes,
-  } from '@react-native-google-signin/google-signin';
->>>>>>> main
   
   
 
@@ -24,7 +16,6 @@ import {
 const GoogleButton = (props) => {
 
 const signIn = async () => {
-<<<<<<< HEAD
     GoogleSignin.configure({        
         androidClientId: '557760474593-suos50o35pppso4vgl9k20l87pk737s9.apps.googleusercontent.com',        
     });
@@ -34,12 +25,6 @@ const signIn = async () => {
         const userInfo = await GoogleSignin.signIn();
         this.setState({ userInfo });
         console.log(userInfo)
-=======
-    try {
-        await GoogleSignin.hasPlayServices();
-        const userInfo = await GoogleSignin.signIn();
-        this.setState({ userInfo });
->>>>>>> main
     } catch (error) {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -99,7 +84,6 @@ const signIn = async () => {
 
 
         <>
-<<<<<<< HEAD
         <Button title={'Sign in with Google'} onPress={() =>  {    GoogleSignin.configure({        androidClientId: 'ADD_YOUR_ANDROID_CLIENT_ID_HERE',        iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',    });GoogleSignin.hasPlayServices().then((hasPlayService) => {
         if (hasPlayService) {
              GoogleSignin
@@ -118,18 +102,6 @@ const signIn = async () => {
         title="Sign out"
         onPress={signOut}
         />
-=======
-        <View >
-            <Text >Google Authentication</Text>
-            <GoogleSigninButton
-                style={{ width: 192, height: 48 }}
-                size={GoogleSigninButton.Size.Wide}
-                color={GoogleSigninButton.Color.Dark}
-                onPress={this._signIn}
-                disabled={this.state.isSigninInProgress} 
-            />
-        </View>
->>>>>>> main
         </>
     )
 };

@@ -1,0 +1,79 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
+import React,{useState} from 'react';
+
+import {
+  StyleSheet,
+  Text,
+  View,
+  Button,
+  ScrollView,
+  RefreshControl,
+  FlatList,
+  TextInput,
+  Image,
+  ImageBackground,
+
+} from 'react-native';
+
+import {
+  Colors,
+  DebugInstructions,
+  Header,
+  LearnMoreLinks,
+  ReloadInstructions,
+} from 'react-native/Libraries/NewAppScreen';
+
+import styles from './assets/css/styles.js';//importando el stylesheet
+import SesionText from './assets/components/sesionText.js';
+import GoogleButton from './assets/components/GoogleButton.js';
+
+const App = () => {
+
+  const [something,setSomething]=useState('Digite algo primero');
+  const [submitted,setSumitted]=useState(false);
+  const onPress = () => {
+    setSumitted(!submitted);
+  }
+  return (
+    <ImageBackground 
+      style={styles.background}
+      source={require('./assets/img/fonini.png')}
+    >
+      <View style={styles.body}>
+        <View style={[styles.viewLogo]}>
+          <Image       
+            source={require('./assets/img/logo.png')}
+            style={styles.logo}
+          />
+        </View>
+
+        <View style={[styles.viewOptions]}>
+          <SesionText
+            text="Bienvenido"
+          />
+          <GoogleButton
+              
+          />
+          <View
+            style={styles.footer}
+          >
+            <SesionText
+              text="Ayuda"
+            />
+            <SesionText
+              text="UFPS"
+            />
+          </View>
+        </View>
+      </View>
+    </ImageBackground>
+  );
+};
+export default App;
