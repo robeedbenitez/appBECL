@@ -16,3 +16,6 @@ textinput -> placeholder, onchangeText
 inicio con boton de google
 npm i @react-native-google-signin/google-signin
 https://ibjects.medium.com/google-signin-tutorial-for-react-native-81a57fb67b18
+
+Buscar lave sha-1 
+keytool -list -v -keystore ./android/App/debug.keystore -alias androiddebugkey -storepass android -keypass android

@@ -8,7 +8,10 @@ import {
 } from 'react-native';
 
 
-import {    GoogleSignin,    statusCodes,} from '@react-native-google-signin/google-signin';
+import {    
+    GoogleSignin,    
+    statusCodes,
+} from '@react-native-google-signin/google-signin';
 
 const ButtonSingOut = (props) => {
     const signOut = async () => {

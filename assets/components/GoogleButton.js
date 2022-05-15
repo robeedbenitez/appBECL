@@ -8,23 +8,30 @@ import {
 } from 'react-native';
 
 
-import {    GoogleSignin,    statusCodes,} from '@react-native-google-signin/google-signin';
+import {    
+    GoogleSignin,    
+    statusCodes,
+    GoogleSigninButton,
+} from '@react-native-google-signin/google-signin';
   
   
 
 
 const GoogleButton = (props) => {
+    const [user,setUser]=useState([])
+    const [userLogin,setUserLogin]=useState(false)
 
 const signIn = async () => {
     GoogleSignin.configure({        
         androidClientId: '557760474593-suos50o35pppso4vgl9k20l87pk737s9.apps.googleusercontent.com',        
     });
-    try {          
-        
+    try { 
         await GoogleSignin.hasPlayServices();
         const userInfo = await GoogleSignin.signIn();
-        this.setState({ userInfo });
         console.log(userInfo)
+        setUser( userInfo );
+        
+
     } catch (error) {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {
         // user cancelled the login flow
@@ -65,7 +72,7 @@ const signIn = async () => {
     try {
         await GoogleSignin.revokeAccess();
         await GoogleSignin.signOut();
-        this.setState({ user: null }); // Remember to remove the user from your app's state as well
+        //setloggedIn({ user: null }); // Remember to remove the user from your app's state as well
     } catch (error) {
         console.error(error);
     }
@@ -80,24 +87,10 @@ const signIn = async () => {
     }
     };
     return (
-
-
-
         <>
-        <Button title={'Sign in with Google'} onPress={() =>  {    GoogleSignin.configure({        androidClientId: 'ADD_YOUR_ANDROID_CLIENT_ID_HERE',        iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',    });GoogleSignin.hasPlayServices().then((hasPlayService) => {
-        if (hasPlayService) {
-             GoogleSignin
-             .signIn()
-             .then((userInfo) => {
-                console.log(JSON.stringify(userInfo))             
-                }).catch((e) => {             
-                    console.log("ERROR IS: " + JSON.stringify(e));             
-                    })        
-                }}).catch((e) => {    
-                        console.log("ERROR IS: " + JSON.stringify(e));
-                        })
-                        }} 
-        />
+        <Button title={'Sign in with Google'}
+        onPress={signIn}
+        />        
         <Button
         title="Sign out"
         onPress={signOut}
