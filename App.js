@@ -13,6 +13,15 @@ import {
   Text,
   View,
   Button,
+  ScrollView,
+  RefreshControl,
+  FlatList,
+  TextInput,
+  Image,
+  ImageBackground,
+  SafeAreaView,
+  Alert,
+
 } from 'react-native';
 
 import {
@@ -23,47 +32,50 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import styles from './assets/css/styles.js';//importando el stylesheet
+import SesionText from './assets/components/sesionText.js';
+import GoogleButton from './assets/components/GoogleButton.js';
+import ButtonSingOut from './assets/components/ButtonSingOut.js';
 
 const App = () => {
 
-  const [number,setNumber] = useState(0);
-  const [times1,setTimes1] = useState(0);
-  const [times2,setTimes2] = useState(0);
-  
-  const onClickRes = () => {
-    setNumber(number-5);
-    setTimes2(times2+1);
+  const [something,setSomething]=useState('Digite algo primero');
+  const onPress = () => {
+    setSomething("hola");
   }
   
-  const onClickSum = () => {
-    setNumber(number+5);
-    setTimes1(times1+1);
-  }
-
   return (
-    <View style={styles.body}>
-      <Text style={styles.text}> times: {times1}</Text>
-      <Button style={styles.button} title='+' onPress={onClickSum}></Button>
-      <Text style={styles.text}>Number: {number}</Text>
-      <Button style={styles.button} title='-' onPress={onClickRes}></Button>
-      <Text style={styles.text}> times: {times2}</Text>
-    </View>
+    <ImageBackground 
+      style={styles.background}
+      source={require('./assets/img/fonini.png')}
+    >
+      <SafeAreaView style={styles.body}>
+        <View style={[styles.viewLogo]}>
+          <Image       
+            source={require('./assets/img/logo.png')}
+            style={styles.logo}
+          />
+        </View>
+
+        <View style={[styles.viewOptions]}>
+          <SesionText
+            text="Bienvenido"
+          />
+          <GoogleButton
+          />
+          <View
+            style={styles.footer}
+          >
+            <SesionText
+              text="Ayuda"
+            />
+            <SesionText
+              text="UFPS"
+            />
+          </View>
+        </View>
+      </SafeAreaView>
+    </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  body: {
-    flex: 1,
-    backgroundColor: '#eae',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 20,
-    color: '#fff',
-    margin: 20,
-  },
-
-});
-
 export default App;
