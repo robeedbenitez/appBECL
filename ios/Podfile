@@ -4,7 +4,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 platform :ios, '11.0'
 install! 'cocoapods', :deterministic_uuids => false
 
-target 'AppBECL' do
+target 'Google' do
   config = use_native_modules!
 
   # Flags change depending on the env values.
@@ -19,7 +19,7 @@ target 'AppBECL' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
-  target 'AppBECLTests' do
+  target 'GoogleTests' do
     inherit! :complete
     # Pods for testing
   end

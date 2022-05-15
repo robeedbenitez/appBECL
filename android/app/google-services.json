@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "557760474593",
+    "project_id": "appbecl",
+    "storage_bucket": "appbecl.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557760474593:android:636cb1feb4a408aa47b6a0",
+        "android_client_info": {
+          "package_name": "com.becl"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557760474593-bcg20m37aubmuims0vnkubc52mhrjop4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.becl",
+            "certificate_hash": "db0ece48de6b8c15112fdb10f90c39fde654e078"
+          }
+        },
+        {
+          "client_id": "557760474593-vf09c3gf8ihl80r60h8rep3fe9r0669g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDabwqJnhlKhZtMqpff6eIv1OJqaVQEQ2g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "557760474593-vf09c3gf8ihl80r60h8rep3fe9r0669g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -35,7 +35,10 @@ import {
 import styles from './assets/css/styles.js';//importando el stylesheet
 import SesionText from './assets/components/sesionText.js';
 import GoogleButton from './assets/components/GoogleButton.js';
+<<<<<<< HEAD
 import ButtonSingOut from './assets/components/ButtonSingOut.js';
+=======
+>>>>>>> main
 
 const App = () => {
 
