@@ -12,3 +12,7 @@ Text: para colocar texto
 Scrollview: componete para poder hacer scrollo a la pantalla
 flatlist: ...
 textinput -> placeholder, onchangeText
+
+inicio con boton de google
+npm i @react-native-google-signin/google-signin
+https://ibjects.medium.com/google-signin-tutorial-for-react-native-81a57fb67b18
