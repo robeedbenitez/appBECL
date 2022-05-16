@@ -19,3 +19,7 @@ https://ibjects.medium.com/google-signin-tutorial-for-react-native-81a57fb67b18
 
 Buscar lave sha-1 
 keytool -list -v -keystore ./android/App/debug.keystore -alias androiddebugkey -storepass android -keypass android
+react navigation
+npm install @react-navigation/native
+npm install react-native-screens react-native-safe-area-context
+npm install @react-navigation/native-stack
