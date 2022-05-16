@@ -13,6 +13,8 @@ import java.util.ArrayList;
 
 // @react-native-google-signin/google-signin
 import com.reactnativegooglesignin.RNGoogleSigninPackage;
+// react-native-gesture-handler
+import com.swmansion.gesturehandler.RNGestureHandlerPackage;
 // react-native-safe-area-context
 import com.th3rdwave.safeareacontext.SafeAreaContextPackage;
 // react-native-screens
@@ -63,6 +65,7 @@ public class PackageList {
     return new ArrayList<>(Arrays.<ReactPackage>asList(
       new MainReactPackage(mConfig),
       new RNGoogleSigninPackage(),
+      new RNGestureHandlerPackage(),
       new SafeAreaContextPackage(),
       new RNScreensPackage()
     ));

@@ -21,7 +21,7 @@ const GoogleButton = (props) => {
     const [user,setUser]=useState([])
     const [userLogin,setUserLogin]=useState(false)
 
-const signIn = async () => {
+const signIn = async ({navigation}) => {
     GoogleSignin.configure({        
         androidClientId: '557760474593-suos50o35pppso4vgl9k20l87pk737s9.apps.googleusercontent.com',        
     });
@@ -30,7 +30,7 @@ const signIn = async () => {
         const userInfo = await GoogleSignin.signIn();
         console.log(userInfo)
         setUser( userInfo );
-        
+        navigation.navigate('mainPages',{user})
 
     } catch (error) {
         if (error.code === statusCodes.SIGN_IN_CANCELLED) {

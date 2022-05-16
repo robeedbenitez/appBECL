@@ -37,12 +37,9 @@ import {
 import styles from './assets/css/styles.js';//importando el stylesheet
 import SesionText from './assets/components/sesionText.js';
 import GoogleButton from './assets/components/GoogleButton.js';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/native-stack';
-import mainPages from './assets/pages/mainPages.js';
 
 const App = () => {
-  const Stack = createStackNavigator();
+  
   const [something,setSomething]=useState('Digite algo primero');
   const onPress = () => {
     setSomething("hola");
@@ -65,12 +62,9 @@ const App = () => {
           <SesionText
             text="Bienvenido"
           />
-          <NavigationContainer>
-            <Stack.Navigator>
+          
             <GoogleButton
             />
-            </Stack.Navigator>
-          </NavigationContainer>
           
           <View
             style={styles.footer}
