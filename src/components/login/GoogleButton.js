@@ -25,13 +25,14 @@ const GoogleButton = ({props}) => {
         GoogleSignin.configure({
             scopes: ['https://www.googleapis.com/auth/drive.readonly'],
             androidClientId: '557760474593-udunhvofgt4i46djq47q6j2u1k6ivpqa.apps.googleusercontent.com',
+            webClientId: '557760474593-3cduoqecia7n1bbcf7mmfbivq60d8vcf.apps.googleusercontent.com'
         });
         try {
             await GoogleSignin.hasPlayServices();
             const user = await GoogleSignin.signIn();
-            //console.log(user)
+            console.log(user)
             console.log('tokens de google '+GoogleSignin.getTokens())
-            props.navigation.replace('mainpage', { user })
+            props.navigation.navigate('mainpage', { user })
 
         } catch (error) {
             if (error.code === statusCodes.SIGN_IN_CANCELLED) {
