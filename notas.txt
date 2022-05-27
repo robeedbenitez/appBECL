@@ -25,3 +25,12 @@ npm install react-native-screens react-native-safe-area-context
 npm install @react-navigation/stack
 npm install react-native-gesture-handler
 npm install @react-native-masked-view/masked-view
+
+
+-------------------
+navigation 
+Stack navigation
+drawer navigation
+useSafeAreaInsets()
+useEffect()
+import plataform from react-native // permite saber en que plataforma se esta trabajando

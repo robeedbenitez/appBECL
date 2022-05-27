@@ -1,26 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, {useContext } from 'react';
 import {
     Button,
     StyleSheet,
-    View,
-    Text,
-    Alert,
 } from 'react-native';
-
 
 import {
     GoogleSignin,
     statusCodes,
     GoogleSigninButton,
 } from '@react-native-google-signin/google-signin';
+import {AuthContext} from '../../context/authContext/authContext'
 
 
 
 
-const GoogleButton = ({props}) => {
-    
-    const [userLogin, setUserLogin] = useState(false)
-
+const GoogleButton = ({ props }) => {
+    const {logIn,setUser,user} = useContext(AuthContext);
     const signIn = async () => {
         GoogleSignin.configure({
             scopes: ['https://www.googleapis.com/auth/drive.readonly'],
@@ -29,10 +24,10 @@ const GoogleButton = ({props}) => {
         });
         try {
             await GoogleSignin.hasPlayServices();
-            const user = await GoogleSignin.signIn();
-            console.log(user)
-            console.log('tokens de google '+GoogleSignin.getTokens())
-            props.navigation.navigate('mainpage', { user })
+            const userGoogle = await GoogleSignin.signIn();
+            setUser(userGoogle)
+            logIn()
+            props.navigation.navigate('Tabs')
 
         } catch (error) {
             if (error.code === statusCodes.SIGN_IN_CANCELLED) {
@@ -46,6 +41,7 @@ const GoogleButton = ({props}) => {
             }
         }
     };
+
 
     const getCurrentUserInfo = async () => {
         try {
@@ -70,10 +66,12 @@ const GoogleButton = ({props}) => {
         this.setState({ currentUser });
     };
 
-    const signOut = async () => {
+    const signOut = async ({ props }) => {
+
         try {
             await GoogleSignin.revokeAccess();
             await GoogleSignin.signOut();
+            props.navigation.navigate('LoginScreen')
             //setloggedIn({ user: null }); // Remember to remove the user from your app's state as well
         } catch (error) {
             console.error(error);
@@ -88,16 +86,24 @@ const GoogleButton = ({props}) => {
             console.error(error);
         }
     };
-    
+
     return (
         <>
-            <Button title={'Sign in with Google'}
+            {!user ? 
+            <Button 
+                style={styles.button}
+                title={'Sign in with Google'}
                 onPress={signIn}
-            />
+            /> 
+            :
             <Button
+                style={styles.button}
                 title="Sign out"
                 onPress={signOut}
             />
+            }
+
+
         </>
     )
 };

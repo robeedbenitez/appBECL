@@ -1,50 +1,25 @@
+
 import { NavigationContainer } from '@react-navigation/native';
-
-import 
-  React
-  from 'react';
-import {
-  Text,
-}from 'react-native';
-
-import {
-  View,
-  Image,
-  ImageBackground,
-  SafeAreaView,
-  Alert,
-} from 'react-native';
-import Login from './src/components/login/Login.js';
-import MainPage from './src/components/dashboard/MainPage.js';
-import { createStackNavigator } from '@react-navigation/stack';
-
-const Stack = createStackNavigator();
-
-
+import React from 'react';
+import StackNavigator from './src/navigator/StackNavigator.js';
+import {AuthProvider} from './src/context/authContext/authContext.js';
 
 const App = () => {
-  
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen 
-          name="login" 
-          component={Login} 
-          options={{
-            header:()=> null
-          }}
-          />
-        <Stack.Screen 
-        name="mainpage" 
-        component={MainPage} 
-        options={{
-          header:()=> null
-        }}
-        />
 
-      </Stack.Navigator>
-      
+  return (
+    
+    <NavigationContainer>
+      <AppSate>
+        <StackNavigator />
+      </AppSate>
     </NavigationContainer>
   );
 };
+const AppSate = ({children}) => {
+  return (
+    <AuthProvider>
+      {children}
+    </AuthProvider>
+  );
+}
 export default App;
