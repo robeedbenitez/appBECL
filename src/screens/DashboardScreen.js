@@ -1,24 +1,22 @@
-import React,{useContext} from 'react'
+import React, { useContext } from 'react'
 import {
     View,
     Text,
     ScrollView,
 } from 'react-native'
-import {AuthContext} from '../context/authContext/authContext'
-import GoogleButton from '../components/login/GoogleButton'
+import { AuthContext } from '../context/authContext/authContext'
 
-const DashboardScreen =()=> {
-    
-    const authState= useContext(AuthContext)
-    //console.log('este es el context '+ JSON.stringify(authState))
+const DashboardScreen = () => {
+
+    const { authState } = useContext(AuthContext)
+    const { user } = authState.googleToken
+    //console.log('este es el context ' + JSON.stringify(authState))
     return (
         <ScrollView>
             <Text>
-            dashboardScreen
+                Bienvenido {user.givenName} al dashboardScreen BECL
             </Text>
-            <Text>
-                {JSON.stringify(authState)}
-            </Text>
+            
         </ScrollView>
     )
 }

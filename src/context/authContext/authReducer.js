@@ -1,25 +1,31 @@
 
 
 const authReducer =(state, action) =>{
-    //console.log(action)
+    
     switch(action.type){
         case 'singIn':
             return {
                 ...state,
                 isLoggedIn: true,
             }
-            case 'setUser':
+            case 'setGoogleToken':
             return {
                 ...state,
-                isLoggedIn: true,
-                user:action.payload,
+                googleToken:action.payload,
             }
             case 'logOut':
             return {
                 ...state,
                 isLoggedIn: false,
-                user:null,
+                googleToken:null,
+                BECLToken: null,
             }
+            case 'setBECLToken':
+            return {
+                ...state,
+                BECLToken:action.payload,
+            }
+            
         default:
             return state;
     }

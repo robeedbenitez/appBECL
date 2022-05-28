@@ -34,3 +34,6 @@ drawer navigation
 useSafeAreaInsets()
 useEffect()
 import plataform from react-native // permite saber en que plataforma se esta trabajando
+--------------
+mapear puertos de ADB con localhost
+adb reverse tcp:8000 tcp:8000

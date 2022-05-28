@@ -2,6 +2,7 @@ import React from 'react';
 import LoginScreen from '../screens/LoginScreen.js';
 import { createStackNavigator } from '@react-navigation/stack';
 import Tabs from '../navigator/Tabs.js';
+import ValidarUserBECL from '../components/login/ValidarUserBECL';
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
@@ -13,8 +14,7 @@ const StackNavigator = () => {
             options={{
                 header: () => null
             }}
-        />
-        
+        />        
         <Stack.Screen
             name="Tabs"
             component={Tabs}

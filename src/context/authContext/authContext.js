@@ -3,10 +3,12 @@ import React,{createContext,useReducer} from 'react'
 import authReducer from './authReducer'
 const initContext = {
     isLoggedIn: false,
-    user: null,
+    googleToken: null,
+    BECLToken: null,
     logIn: () => {},
-    setUser: (user) => {},
+    setGoogleToken: (googleToken) => {},
     logout: () => {},
+    setBECLToken: (BECLToken) => {},
 }
 
 export const AuthContext = createContext(initContext)
@@ -15,23 +17,26 @@ export const AuthProvider = ({children}) => {
     const logIn = () => {
         despatch({type: 'singIn'})
     }
-    const setUser = (user) => {
-        despatch({type: 'setUser',payload: user})
+    const setGoogleToken = (googleToken) => {
+        despatch({type: 'setGoogleToken',payload: googleToken})
     }
     const logOut = () => {
         despatch({type: 'logOut'})
+    }
+    const setBECLToken = (BECLToken) => {
+        despatch({type: 'setBECLToken',payload: BECLToken})
     }
     return (
         <AuthContext.Provider
             value={{
                 authState,
                 logIn,
-                setUser,
+                setGoogleToken,
                 logOut,
+                setBECLToken,
             }}
         >
             {children}
         </AuthContext.Provider>
     )
 }
- 
