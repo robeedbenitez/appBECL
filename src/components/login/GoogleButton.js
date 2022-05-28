@@ -12,11 +12,11 @@ import { AuthContext } from '../../context/authContext/authContext';
 import ValidarUserBECL from './ValidarUserBECL';
 
 const GoogleButton = ({ props }) => {
-    const { 
-        logIn, 
-        setGoogleToken, 
+    const {
+        logIn,
+        setGoogleToken,
         logOut,
-        setBECLToken 
+        setBECLToken
     } = useContext(AuthContext);
 
     const signIn = async () => {
@@ -32,11 +32,13 @@ const GoogleButton = ({ props }) => {
             const userGoogle = await GoogleSignin.signIn();
             logIn()
             setGoogleToken(userGoogle)
-            //console.log(userGoogle.idToken)           
-            ValidarUserBECL(userGoogle.idToken)
-            .then(res => {
-                setBECLToken(res)
-            })
+            //console.log(userGoogle.idToken) 
+
+            await ValidarUserBECL(userGoogle.idToken)
+                .then(res => {
+                    setBECLToken(res)
+                })
+
             props.navigation.navigate('Tabs')
 
         } catch (error) {
