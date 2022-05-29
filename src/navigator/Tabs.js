@@ -6,6 +6,7 @@ import UserScreen from '../screens/UserScreen'
 const Tab = createBottomTabNavigator();
 
 const Tabs=()=> {
+    
     return (
         <Tab.Navigator>
             <Tab.Screen name="DashboardScreen" component={DashboardScreen} />

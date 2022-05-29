@@ -1,10 +1,8 @@
-import React from 'react'
-import generarQr from '../components/general/generarQr'
-const QrScreen = (props) => {
 
-    generarQr(props.grupoId).then(res => {
-        console.log(res)
-    })
+import React from 'react'
+const QrScreen = (props) => {
+    console.log("props de qrscreen "+JSON.stringify(props))
+    
     return (
         <>
             <Text>Qr screen</Text>

@@ -12,6 +12,7 @@ import { AuthContext } from '../../context/authContext/authContext';
 import ValidarUserBECL from './ValidarUserBECL';
 
 const GoogleButton = ({ props }) => {
+    
     const {
         logIn,
         setGoogleToken,
@@ -37,7 +38,9 @@ const GoogleButton = ({ props }) => {
             await ValidarUserBECL(userGoogle.idToken)
                 .then(res => {
                     setBECLToken(res)
-                })
+                }).catch(err => {
+                    console.log(err)
+                });
 
             props.navigation.navigate('Tabs')
 

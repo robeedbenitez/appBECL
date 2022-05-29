@@ -6,11 +6,19 @@ import QrScreen from '../screens/QrScreen.js';
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
+    
     return (
         <Stack.Navigator>
             <Stack.Screen
                 name="LoginScreen"
                 component={LoginScreen}
+                options={{
+                    header: () => null
+                }}
+            />
+            <Stack.Screen
+                name="QrScreen"
+                component={QrScreen}
                 options={{
                     header: () => null
                 }}
@@ -23,13 +31,7 @@ const StackNavigator = () => {
                 }}
             />
 
-            <Stack.Screen
-                name="QrScreen"
-                component={QrScreen}
-                options={{
-                    header: () => null
-                }}
-            />
+            
         </Stack.Navigator>
     );
 }

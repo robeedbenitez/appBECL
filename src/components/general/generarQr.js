@@ -1,18 +1,20 @@
 
-const generarQr = async(grupo) => {
-    const baseUrl = "127.0.0.1:8001/entrance/api/v1/obtain_qr/"
+const generarQr = async(data) => {
+    //console.log("data de generar qr "+JSON.stringify(data))
+    const baseUrl = "http://127.0.0.1:8001/entrance/api/v1/obtain_qr/"
     const res = await fetch(baseUrl, {
         method: 'POST',
         body: JSON.stringify({
-            group_id: grupo,
+            group_id: data.grupo,
         }),
         headers: {
             'Content-Type': 'application/json',
+            'Authorization': 'Bearer '+data.token,
         },
     })
-    const data = await res.json()
+    const datares = await res.json()
 
-    console.log(data)
-    return data
+    console.log("data de generar qr "+datares)
+    return datares
 }
 export default generarQr
