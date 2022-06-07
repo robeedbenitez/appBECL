@@ -54,5 +54,16 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         justifyContent:'space-between',
     },
+    primaryColor: {
+        color: '#A81F2B',
+    },
+    secondaryColor: {
+        color: '#E05554',
+    },
+    primaryColorDark: {
+        color: '#720001',
+    }
+
+
 });
 export default styles;

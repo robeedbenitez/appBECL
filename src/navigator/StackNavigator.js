@@ -3,6 +3,7 @@ import LoginScreen from '../screens/LoginScreen.js';
 import { createStackNavigator } from '@react-navigation/stack';
 import Tabs from '../navigator/Tabs.js';
 import QrScreen from '../screens/QrScreen.js';
+import DashboardScreen from '../screens/DashboardScreen.js';
 const Stack = createStackNavigator();
 
 const StackNavigator = () => {
@@ -30,6 +31,13 @@ const StackNavigator = () => {
                     header: () => null
                 }}
             />
+            <Stack.Screen
+                name="DashboardScreen"
+                component={DashboardScreen}
+                options={{
+                    header: () => null
+            }}
+        />
 
             
         </Stack.Navigator>

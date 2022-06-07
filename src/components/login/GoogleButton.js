@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
     Button,
     StyleSheet,
@@ -12,19 +12,21 @@ import { AuthContext } from '../../context/authContext/authContext';
 import ValidarUserBECL from './ValidarUserBECL';
 
 const GoogleButton = ({ props }) => {
-    
+
     const {
         logIn,
         setGoogleToken,
         logOut,
-        setBECLToken
+        setBECLToken,
     } = useContext(AuthContext);
+
+
 
     const signIn = async () => {
         GoogleSignin.configure({
             scopes: ['https://www.googleapis.com/auth/drive.readonly'],
-            //androidClientId: '557760474593-du8krnoga2bme4l6ac5sauniv6hps3i6.apps.googleusercontent.com',            
-            webClientId: '557760474593-3cduoqecia7n1bbcf7mmfbivq60d8vcf.apps.googleusercontent.com'
+            //androidClientId: '215382460353-6cpt22p56kir9faqo7ea1tjb7pacsofu.apps.googleusercontent.com',
+            webClientId: '215382460353-qq2lc93pf3mdtvbg8560d7lumitronl8.apps.googleusercontent.com',
             //webClientId: '557760474593-3cduoqecia7n1bbcf7mmfbivq60d8vcf.apps.googleusercontent.com'
 
         });
@@ -77,19 +79,19 @@ const GoogleButton = ({ props }) => {
                 title={'Sign in with Google'}
                 onPress={signIn}
             />
-
             <Button
                 style={styles.button}
                 title="Sign out"
                 onPress={signOut}
             />
+
+
+
         </>
     )
 };
 const styles = StyleSheet.create({
     button: {
-        color: "white",
-        borderRadius: 40,
     },
     view: {
         width: '100%',

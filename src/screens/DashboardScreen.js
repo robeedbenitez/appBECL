@@ -4,17 +4,18 @@ import {
     Text,
     ScrollView,
     Button,
+    StyleSheet,
 } from 'react-native'
 import jwt_decode from "jwt-decode";
 import { AuthContext } from '../context/authContext/authContext'
 import generarQr from '../components/general/generarQr'
 
-const DashboardScreen = () => {
-
+const DashboardScreen = (props) => {
+    //console.log("props de dashboardScreen "+JSON.stringify(props))
     const { authState } = useContext(AuthContext)
     const { user } = authState.googleToken
     const BECLuser = jwt_decode(authState.BECLToken.access)
-    console.log(JSON.stringify(authState))
+    //console.log(JSON.stringify(authState))
     const [qr,setQr] = useState();
 
     const QrScreen = async() => {
@@ -31,7 +32,6 @@ const DashboardScreen = () => {
         } catch (error) {
             console.log(error)
         }
-
         
     }
     return (
@@ -45,6 +45,10 @@ const DashboardScreen = () => {
                         title="Generar QR"
                         onPress={QrScreen}
                     />
+                    <Button
+                        style ={styles.google}
+                        title="Ir a QrScreen"
+                    />
                     {qr?<Text>{qr}</Text>:null}
 
                 </View>
@@ -54,3 +58,14 @@ const DashboardScreen = () => {
 }
 
 export default DashboardScreen;
+
+
+const styles = StyleSheet.create({
+    google: {
+        backgroundColor: '#420bbb',
+        padding: 10,
+        margin: 10,
+        borderBottomWidth: 1,
+
+    }
+});
