@@ -1,5 +1,8 @@
 
-import React, { useContext } from 'react'
+import React, { 
+  useContext 
+} from 'react'
+
 import {
   View,
   Text,
@@ -10,13 +13,12 @@ import {
   SafeAreaView,
 } from 'react-native'
 
+import Icon from 'react-native-vector-icons/MaterialIcons';
+
+
 import { AuthContext } from '../context/authContext/authContext'
 import jwt_decode from "jwt-decode";
 import style from '../theme/styles';
-
-
-
-
 
 function UserScreen() {
   const { authState } = useContext(AuthContext)
@@ -38,16 +40,16 @@ function UserScreen() {
                 <Text>
                   foto
                 </Text>
-              <Image
-              
-                source={{
-                  uri: user.photo,
-                }}
-              />
-              {console.log(user.photo)}
+                <Image
+
+                  source={{
+                    uri: user.photo,
+                  }}
+                />
+                {console.log(user.photo)}
               </View>
-              
-              
+
+
               <View style={styles.info}>
                 <Text style={styles.textInfo}>
                   {user.id}
@@ -63,6 +65,9 @@ function UserScreen() {
                 </Text>
                 <Text style={styles.textInfo}>
                   Carrera
+                </Text>
+                <Text>
+                                
                 </Text>
               </View>
 
@@ -109,10 +114,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  info:{
+  info: {
     marginLeft: 50,
     justifyContent: 'space-around',
-    
+
     width: '80%',
     height: '60%',
     //backgroundColor: '#Fee',
@@ -151,7 +156,7 @@ const styles = StyleSheet.create({
     height: '30%',
     justifyContent: 'center',
     alignItems: 'center',
-    
+
   }
 
 
