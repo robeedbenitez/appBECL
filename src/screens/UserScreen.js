@@ -1,6 +1,6 @@
 
-import React, { 
-  useContext 
+import React, {
+  useContext
 } from 'react'
 
 import {
@@ -13,22 +13,22 @@ import {
   SafeAreaView,
 } from 'react-native'
 
-import Icon from 'react-native-vector-icons/MaterialIcons';
-
-
 import { AuthContext } from '../context/authContext/authContext'
 import jwt_decode from "jwt-decode";
 import style from '../theme/styles';
+import UserText from '../components/general/UserText'
 
 function UserScreen() {
   const { authState } = useContext(AuthContext)
   const { user } = authState.googleToken
   const BECLuser = jwt_decode(authState.BECLToken.access)
   console.log(JSON.stringify(user))
+
   return (
     <>
       <ImageBackground
         source={require('../img/backgroundprofile.png')}
+        resizeMode="cover"
         style={styles.background}
       >
         <SafeAreaView
@@ -36,39 +36,37 @@ function UserScreen() {
         >
           <View style={styles.container}>
             <View style={styles.infoContainer}>
-              <View style={styles.photoContainer}>
-                <Text>
-                  foto
-                </Text>
+              <View style={[styles.photoContainer]}>
                 <Image
-
+                  style={styles.photo}
                   source={{
-                    uri: user.photo,
+                    uri: user.photo
                   }}
                 />
-                {console.log(user.photo)}
               </View>
 
 
               <View style={styles.info}>
-                <Text style={styles.textInfo}>
-                  {user.id}
-                </Text>
-                <Text style={styles.textInfo}>
-                  {user.name}
-                </Text>
-                <Text style={styles.textInfo}>
-                  Cedula
-                </Text>
-                <Text style={styles.textInfo}>
-                  {user.email}
-                </Text>
-                <Text style={styles.textInfo}>
-                  Carrera
-                </Text>
-                <Text>
-                                
-                </Text>
+                <UserText
+                  iconName="fingerprint"
+                  data={user.id}
+                />
+                <UserText
+                  iconName="face"
+                  data={user.name}
+                />
+                <UserText
+                  iconName="portrait"
+                  data='Cedula'
+                />
+                <UserText
+                  iconName="email"
+                  data={user.email}
+                />
+                <UserText
+                  iconName="school"
+                  data='Carrera'
+                />
               </View>
 
             </View>
@@ -129,9 +127,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     //backgroundColor: 'red'
   },
-  textInfo: {
-    fontSize: 20,
-  },
   button: {
     backgroundColor: style.secondaryColor.color,
     paddingHorizontal: 20,
@@ -157,6 +152,11 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
 
+  },
+  photo: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'contain',
   }
 
 

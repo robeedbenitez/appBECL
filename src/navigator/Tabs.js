@@ -25,7 +25,7 @@ const Tabs = () => {
                         let iconName;
                         switch (route.name) {
                             case 'DashboardScreen':
-                                iconName = 'call';
+                                iconName = 'dashboard';
                                 break;                            
                             case 'UserScreen':
                                 iconName = 'person';
