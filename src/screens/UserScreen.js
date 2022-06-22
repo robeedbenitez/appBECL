@@ -142,7 +142,6 @@ const styles = StyleSheet.create({
     height: '30%',
     justifyContent: 'center',
     alignItems: 'center',
-
   },
   photo: {
     width: '100%',

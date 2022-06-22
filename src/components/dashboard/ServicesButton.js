@@ -16,10 +16,8 @@ import { useNavigation } from '@react-navigation/native';
 
 const ServicesButton = (props) => {
     const navigation = useNavigation();
-    const [qr, setQr] = useState();
     console.log(props)
     const { authState } = useContext(AuthContext)
-    const { user } = authState.googleToken
     const BECLuser = jwt_decode(authState.BECLToken.access)
 
     const QrScreen = async () => {
@@ -30,7 +28,6 @@ const ServicesButton = (props) => {
             }
             await generarQr(data)
                 .then(data => {
-                    setQr(data.qrcode)
                     navigation.navigate('QrScreen',data.qrcode)
                     console.log("data de generar qr " + data)
                 })
