@@ -2,7 +2,7 @@
 
 const ValidarUserBECL = async (idToken) => {
     //console.log(idToken)
-    const baseUrl = "http://164.92.115.102:8000/auth/api/v1/sign_in_up/"
+    const baseUrl = "http://164.92.88.6:8000/auth/api/v1/sign_in_up/"
     
      const a=JSON.stringify({
         token: idToken

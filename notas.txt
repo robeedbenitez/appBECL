@@ -21,18 +21,22 @@ Buscar lave sha-1
 keytool -list -v -keystore ./android/App/debug.keystore -alias androiddebugkey -storepass android -keypass android
 -----react navigation------
 
-npm i @react-native-google-signin/google-signin
+
 npm install @react-navigation/native
 npm install react-native-screens react-native-safe-area-context
 npm install @react-navigation/stack
 npm install react-native-gesture-handler
 npm install @react-native-masked-view/masked-view
+npm install @react-navigation/bottom-tabs
+
 -------npm install react-native-cli
 
 ---------- react native vector icon--------
-
+https://github.com/oblador/react-native-vector-icons#android
 npm install --save react-native-vector-icons
 
+-------------JWT Decode 
+npm install jwt-decode
 
 -------------------
 navigation 

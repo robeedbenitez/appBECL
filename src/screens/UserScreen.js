@@ -15,8 +15,9 @@ import {
 
 import { AuthContext } from '../context/authContext/authContext'
 import jwt_decode from "jwt-decode";
-import style from '../theme/styles';
+import theme from '../theme/theme';
 import UserText from '../components/general/UserText'
+import GeneralButton from '../components/general/GeneralButton';
 
 function UserScreen() {
   const { authState } = useContext(AuthContext)
@@ -71,22 +72,12 @@ function UserScreen() {
 
             </View>
             <View style={styles.buttonsConstainer}>
-              <TouchableOpacity
-                style={styles.button}
-              >
-                <Text
-                  style={styles.textWhite}>
-                  Historial
-                </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.button}
-              >
-                <Text
-                  style={styles.textWhite}>
-                  Mis solicitudes
-                </Text>
-              </TouchableOpacity>
+            <GeneralButton
+              text="Historial"
+            />
+            <GeneralButton
+              text="Mis solicitudes"
+            />
 
 
             </View>
@@ -128,7 +119,7 @@ const styles = StyleSheet.create({
     //backgroundColor: 'red'
   },
   button: {
-    backgroundColor: style.secondaryColor.color,
+    backgroundColor: theme.secondaryColor.color,
     paddingHorizontal: 20,
     paddingVertical: 10,
     borderRadius: 10,

@@ -2,12 +2,9 @@ import React from 'react'
 import {
     createBottomTabNavigator
 } from '@react-navigation/bottom-tabs';
-import {
-    Text,
-} from 'react-native'
 import DashboardScreen from '../screens/DashboardScreen'
 import UserScreen from '../screens/UserScreen'
-import styles from '../theme/styles.js'
+import theme from '../theme/theme.js'
 import Icon from 'react-native-vector-icons/MaterialIcons';
 const Tab = createBottomTabNavigator();
 
@@ -20,7 +17,7 @@ const Tabs = () => {
             screenOptions={
                 
                 ({ route }) => ({
-                    tabBarActiveTintColor:'#A81F2B',
+                    tabBarActiveTintColor:theme.primaryColor.color,
                     tabBarIcon: ({ color, focused, size }) => {
                         let iconName;
                         switch (route.name) {
@@ -51,7 +48,6 @@ const Tabs = () => {
                 options={{
                     tabBarLabel: "Perfil",
                     header: () => null,
-
                 }}
             />
         </Tab.Navigator>

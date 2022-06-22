@@ -13,7 +13,7 @@ import {
 } from 'react-native';
 import {AuthContext} from '../context/authContext/authContext';
 //import Login from './src/components/login/Login.js';
-import styles from '../theme/styles.js';//importando el stylesheet
+import theme from '../theme/theme.js';//importando el stylesheet
 import SesionText from '../components/login/sesionText';
 import GoogleButton from '../components/login/GoogleButton.js';
 
@@ -25,17 +25,17 @@ const Login = (props) => {
     console.log(context)
     return (
         <ImageBackground
-            style={styles.background}
+            style={theme.background}
             source={require('../img/fonini.png')}
         >
-            <SafeAreaView style={styles.body}>
-                <View style={[styles.viewLogo]}>
+            <SafeAreaView style={theme.body}>
+                <View style={[theme.viewLogo]}>
                     <Image
                         source={require('../img/logo.png')}
-                        style={styles.logo}
+                        style={theme.logo}
                     />
                 </View>
-                <View style={[styles.viewOptions]}>
+                <View style={[theme.viewOptions]}>
                     <SesionText
                         text="Bienvenido"
                     />
@@ -43,7 +43,7 @@ const Login = (props) => {
                         props={props}
                     />
                     <View
-                        style={styles.footer}
+                        style={theme.footer}
                     >
                         <SesionText
                             text="Ayuda"

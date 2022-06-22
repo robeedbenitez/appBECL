@@ -8,10 +8,15 @@ import {
     ImageBackground,
     Image,
     SafeAreaView,
+    TouchableOpacity,
 } from 'react-native'
 import jwt_decode from "jwt-decode";
 import { AuthContext } from '../context/authContext/authContext'
 import generarQr from '../components/general/generarQr'
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import theme from '../theme/theme.js';
+import ServicesButton from '../components/dashboard/ServicesButton'
+
 
 const DashboardScreen = (props) => {
     //console.log("props de dashboardScreen "+JSON.stringify(props))
@@ -41,11 +46,23 @@ const DashboardScreen = (props) => {
         <>
             <ImageBackground
                 style={styles.background}
-                source={require('../img/Servicios.png')}
+                source={require('../img/backgroundservicios.png')}
                 resizeMode='cover'
             >
-
-               {/* <SafeAreaView>
+                <SafeAreaView >
+                    <View style={styles.container}>
+                        <ServicesButton
+                            iconName="home"
+                            title="Ingreso"
+                            onPress="generarQr"
+                        />
+                        <ServicesButton
+                            iconName="portrait"
+                            title="Ingreso"
+                        />
+                    </View>
+                </SafeAreaView>
+                {/* <SafeAreaView>
                     <Text>
                         Bienvenido {user.givenName} al dashboardScreen BECL
                     </Text>
@@ -66,7 +83,6 @@ const DashboardScreen = (props) => {
                     </View>
                 </SafeAreaView>*/}
             </ImageBackground>
-
         </>
     )
 }
@@ -75,17 +91,18 @@ export default DashboardScreen;
 
 
 const styles = StyleSheet.create({
-    google: {
-        backgroundColor: '#420bbb',
-        padding: 10,
-        margin: 10,
-        borderBottomWidth: 1,
 
-    },
     background: {
         flex: 1,
         width: '100%',
         height: '100%',
-        
+
     },
+    container: {
+        flex: 1,        
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+
+    }
 });

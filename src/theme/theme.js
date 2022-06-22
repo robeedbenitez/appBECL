@@ -3,7 +3,7 @@ import {
     StyleSheet
 } from 'react-native';
 
-const styles = StyleSheet.create({
+const theme = StyleSheet.create({
     body: {
         width: '100%',
         height: '100%',
@@ -66,4 +66,4 @@ const styles = StyleSheet.create({
 
 
 });
-export default styles;
+export default theme;
