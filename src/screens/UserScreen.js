@@ -24,7 +24,8 @@ function UserScreen() {
   const { user } = authState.googleToken
   const BECLuser = jwt_decode(authState.BECLToken.access)
   console.log(JSON.stringify(user))
-
+  user.photo = user.photo.replace('=s96-c', '')
+  
   return (
     <>
       <ImageBackground
@@ -137,9 +138,8 @@ const styles = StyleSheet.create({
     color: 'white',
   },
   photoContainer: {
-    //backgroundColor: 'red',
-    width: '100%',
-    height: '30%',
+    width: 190,
+    height: 190,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     resizeMode: 'contain',
+    borderRadius: 400/2,
   }
 
 

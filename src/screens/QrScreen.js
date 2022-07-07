@@ -13,6 +13,7 @@ import jwt_decode from "jwt-decode";
 const QrScreen = (props) => {
     const { authState } = useContext(AuthContext)
     const { user } = authState.googleToken
+    user.photo = user.photo.replace('=s96-c', '')
     console.log("props de qrscreen " + props.route.params)
     const base64Image = props.route.params;
 
@@ -46,7 +47,7 @@ const QrScreen = (props) => {
                     <Text  
                     style={styles.codigo}
                     >
-                        1151813
+                        {user.id}
                     </Text>
 
 

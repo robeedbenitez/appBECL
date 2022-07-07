@@ -57,31 +57,13 @@ const DashboardScreen = (props) => {
                             onPress="generarQr"
                         />
                         <ServicesButton
-                            iconName="portrait"
-                            title="Ingreso"
+                            iconName="home"
+                            title="Salida"
+                            onPress="generarQr"
                         />
                     </View>
                 </SafeAreaView>
-                {/* <SafeAreaView>
-                    <Text>
-                        Bienvenido {user.givenName} al dashboardScreen BECL
-                    </Text>
-                    <View>
-                        <View>
-                            <Button
-                                title="Generar QR"
-                                onPress={QrScreen}
-                            />
-                            <Button
-                                style={styles.google}
-                                title="Ir a QrScreen"
-                            />
-                            {qr ? <Text>{qr}</Text> : null}
-                            
-
-                        </View>
-                    </View>
-                </SafeAreaView>*/}
+                
             </ImageBackground>
         </>
     )
