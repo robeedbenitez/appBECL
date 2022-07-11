@@ -9,13 +9,17 @@ const Stack = createStackNavigator();
 const StackNavigator = () => {
     
     return (
-        <Stack.Navigator>
+        <Stack.Navigator
+            initialRouteName="Tabs"
+        >
             <Stack.Screen
                 name="LoginScreen"
                 component={LoginScreen}
+                
                 options={{
                     header: () => null
                 }}
+                
             />
             <Stack.Screen
                 name="QrScreen"
