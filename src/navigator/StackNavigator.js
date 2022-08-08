@@ -10,12 +10,12 @@ const StackNavigator = () => {
     
     return (
         <Stack.Navigator
-            initialRouteName="Tabs"
+            initialRouteName="LoginScreen"
         >
             <Stack.Screen
                 name="LoginScreen"
                 component={LoginScreen}
-                
+
                 options={{
                     header: () => null
                 }}

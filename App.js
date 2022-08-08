@@ -2,12 +2,12 @@
 import { NavigationContainer } from '@react-navigation/native';
 import React from 'react';
 import StackNavigator from './src/navigator/StackNavigator.js';
-import {AuthProvider} from './src/context/authContext/authContext.js';
+import { AuthProvider } from './src/context/authContext/authContext.js';
 
 const App = () => {
 
   return (
-    
+
     <NavigationContainer>
       <AppSate>
         <StackNavigator />
@@ -15,7 +15,7 @@ const App = () => {
     </NavigationContainer>
   );
 };
-const AppSate = ({children}) => {
+const AppSate = ({ children }) => {
   return (
     <AuthProvider>
       {children}

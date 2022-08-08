@@ -20,8 +20,6 @@ const GoogleButton = ({ props }) => {
         setBECLToken,
     } = useContext(AuthContext);
 
-
-
     const signIn = async () => {
         GoogleSignin.configure({
             scopes: ['https://www.googleapis.com/auth/drive.readonly'],

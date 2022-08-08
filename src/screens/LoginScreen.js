@@ -21,7 +21,6 @@ import GoogleButton from '../components/login/GoogleButton.js';
 
 const Login = (props) => {
     const context = useContext(AuthContext);
-
     console.log(context)
     return (
         <ImageBackground
